@@ -1,0 +1,42 @@
+general {
+    interval = 1
+    colors = false
+}
+
+order += "ethernet enp2s0"
+order += "wireless wlp2s0"
+order += "battery 0"
+order += "volume master"
+order += "time"
+
+wireless wlp2s0 {
+    format_up = "%quality %essid %ip"
+    format_down = ""
+}
+
+ethernet enp2s0 {
+    format_up = "%ip"
+    format_down = ""
+}
+
+battery 0 {
+    hide_seconds = true
+    format = "%status %percentage %remaining"
+    format_down = ""
+    status_chr = "  "
+    status_bat = "  "
+    status_full = ""
+    path = "/sys/class/power_supply/BAT0/uevent"
+}
+
+volume master {
+    format = "  %volume"
+    format_muted = "  %volume M"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+
+time {
+    format = "%Y-%m-%d %H:%M:%S"
+}
