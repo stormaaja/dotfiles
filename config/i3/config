@@ -171,9 +171,9 @@ bindcode 232 exec --no-startup-id light -U 1
 bindcode 233 exec --no-startup-id light -A 1
 
 # Volume
-bindcode 121 exec --no-startup-id pactl set-sink-mute 0 toggle
-bindcode 122 exec --no-startup-id pactl set-sink-volume 0 -2%
-bindcode 123 exec --no-startup-id pactl set-sink-volume 0 +2%
+bindcode 121 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindcode 122 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindcode 123 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 
 # Detect monitors
 bindcode 133 exec --no-startup-id mondet

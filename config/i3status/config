@@ -34,7 +34,7 @@ volume master {
     format_muted = "  %volume"
     device = "default"
     mixer = "Master"
-    mixer_idx = 0
+    mixer_idx = -1
 }
 
 time {
