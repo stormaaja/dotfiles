@@ -1,4 +1,4 @@
 alias ll="ls -l"
 alias vi=nvim
 alias sudo='sudo '
-
+export VISUAL="nvim"
