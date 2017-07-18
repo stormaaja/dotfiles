@@ -183,3 +183,6 @@ bindsym $mod+Shift+Delete exec --no-startup-id sleep 1 && lockscreen
 
 # PrtScr (Screenshot)
 bindsym Print exec --no-startup-id scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/screenshots/'
+
+# Colors
+client.focused          #002b36 #586e75 #fdf6e3 #268bd2
