@@ -10,7 +10,7 @@ order += "volume master"
 order += "time"
 
 wireless wlp2s0 {
-    format_up = "%quality %essid %ip"
+    format_up = " %quality %essid"
     format_down = ""
 }
 
