@@ -167,8 +167,8 @@ bar {
 }
 
 # Backlight
-bindcode 232 exec --no-startup-id light -U 1
-bindcode 233 exec --no-startup-id light -A 1
+bindcode 232 exec --no-startup-id blight -1
+bindcode 233 exec --no-startup-id blight +1
 
 # Volume
 bindcode 121 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -179,7 +179,7 @@ bindcode 123 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindcode 133 exec --no-startup-id mondet
 
 # Lock screen with Shift+MOD+Delete
-bindsym $mod+Shift+Delete exec --no-startup-id sleep 1 && lockscreen
+bindsym $mod+Shift+Delete exec --no-startup-id sleep 1 && lockscreen --monitor-off
 
 # PrtScr (Screenshot)
 bindsym Print exec --no-startup-id scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/screenshots/'
