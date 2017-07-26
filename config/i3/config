@@ -178,8 +178,9 @@ bindcode 123 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 # Detect monitors
 bindcode 133 exec --no-startup-id mondet
 
-# Lock screen with Shift+MOD+Delete
+# Lock screen with Shift+MOD+Delete or with keyboard eject hotkey
 bindsym $mod+Shift+Delete exec --no-startup-id sleep 1 && lockscreen --monitor-off
+bindsym XF86Eject exec --no-startup-id sleep 1 && lockscreen --monitor-off
 
 # PrtScr (Screenshot)
 bindsym Print exec --no-startup-id scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/screenshots/'
