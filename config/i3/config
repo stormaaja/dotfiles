@@ -153,7 +153,8 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command $HOME/bin/i3stbrght
+        # status_command $HOME/bin/i3stbrght
+	status_command i3blocks
 	position top
 	colors {
         	separator #586e75
@@ -171,9 +172,9 @@ bindcode 232 exec --no-startup-id blight -1
 bindcode 233 exec --no-startup-id blight +1
 
 # Volume
-bindcode 121 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindcode 122 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindcode 123 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindcode 121 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
+bindcode 122 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && pkill -RTMIN+10 i3blocks
+bindcode 123 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && pkill -RTMIN+10 i3blocks
 
 # Detect monitors
 bindcode 133 exec --no-startup-id mondet
