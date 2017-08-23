@@ -31,7 +31,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -171,8 +171,8 @@ bar {
 }
 
 # Backlight
-bindcode 232 exec --no-startup-id blight -1 && pkill -RTMIN+11 i3blocks
-bindcode 233 exec --no-startup-id blight +1 && pkill -RTMIN+11 i3blocks
+bindcode 232 exec --no-startup-id blight -15 && pkill -RTMIN+11 i3blocks
+bindcode 233 exec --no-startup-id blight +15 && pkill -RTMIN+11 i3blocks
 
 # Volume
 bindcode 121 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
