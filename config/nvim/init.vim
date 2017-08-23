@@ -56,3 +56,6 @@ set expandtab
 " Invisible characters (ttf-droid)
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:>,precedes:<
 set list
+
+" Other
+set number
