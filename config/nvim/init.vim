@@ -31,9 +31,19 @@ Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
+" Plug '~/my-prototype-plugin'
 
 Plug 'mhartington/oceanic-next'
+
+" Plug 'leafgarland/typescript-vim'
+
+" Plug 'vim-syntastic/syntastic'
+
+" JSX highlight
+"Plug 'pangloss/vim-javascript'
+"Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " Initialize plugin system
 call plug#end()
@@ -59,3 +69,14 @@ set list
 
 " Other
 set number
+set colorcolumn=80
+"let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+" Clojure
+"
+syntax on
+filetype plugin indent on
+
+let g:clojure_fuzzy_indent = 1
+let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
+let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
