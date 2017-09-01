@@ -189,3 +189,4 @@ bindsym XF86Eject exec --no-startup-id sleep 1 && lockscreen --monitor-off
 # PrtScr (Screenshot)
 bindsym Print exec --no-startup-id scrot '%Y-%m-%d-%H-%M-%S_$wx$h_scrot.png' -e 'mv $f ~/screenshots/'
 
+focus_follows_mouse no
