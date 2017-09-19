@@ -5,27 +5,35 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
+" A simple, easy-to-use Vim alignment plugin.
+" https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
 
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" Browse GitHub events (user dashboard, user/repo activity) in Vim.
+" https://github.com/junegunn/vim-github-dashboard
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-" Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" UltiSnips is the ultimate solution for snippets in Vim.
+" https://github.com/SirVer/ultisnips
+" Plug 'SirVer/ultisnips'
+
+" vim-snipmate default snippet
+" Plug 'honza/vim-snippets'
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Clojure Fireplace https://github.com/tpope/vim-fireplace
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" Generates a list of compiler flags. Using a non-master branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
+" Plug 'fatih/vim-go', { 'tag': '*' }
 
 " Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -44,6 +52,16 @@ Plug 'mhartington/oceanic-next'
 "Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
+
+" Editor config
+Plug 'editorconfig/editorconfig-vim'
+
+" Clojure (lisp) formatter
+" Plug 'snoe/nvim-parinfer.js'
+" Plug 'bhurlow/vim-parinfer'
+
+" Formatter
+Plug 'sbdchd/neoformat'
 
 " Initialize plugin system
 call plug#end()
