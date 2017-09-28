@@ -63,6 +63,11 @@ Plug 'editorconfig/editorconfig-vim'
 " Formatter
 Plug 'sbdchd/neoformat'
 
+" Autocomplete
+" Plug 'valloric/youcompleteme'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'clojure-vim/async-clj-omni'
+
 " Initialize plugin system
 call plug#end()
 
@@ -98,3 +103,8 @@ filetype plugin indent on
 let g:clojure_fuzzy_indent = 1
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
 let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
+
+" Enagle autocomplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
