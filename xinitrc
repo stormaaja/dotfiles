@@ -1,5 +1,5 @@
 setxkbmap fi
 pulseaudio &
 xautolock -time 15 -locker lockscreen &
+feh --bg-scale ~/wallpapers/foggy-wallpaper-13880-14351-hd-wallpapers.jpg
 exec i3 -V >> ~/logs/i3log-$(date +"%Y-%m-%d-%H-%M-%S") 2>&1
-feh --bg-scale ~/wallpapers/wkEK1lc.jpg
