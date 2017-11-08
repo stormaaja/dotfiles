@@ -192,4 +192,4 @@ bindsym Print exec --no-startup-id scrot '%Y-%m-%d-%H-%M-%S_$wx$h_scrot.png' -e 
 
 focus_follows_mouse no
 
-exec compton --no-startup-id -b
+exec --no-startup-id compton -b
