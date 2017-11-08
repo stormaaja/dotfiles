@@ -20,12 +20,6 @@ call plug#begin('~/.vim/plugged')
 " vim-snipmate default snippet
 " Plug 'honza/vim-snippets'
 
-" On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
-" Clojure Fireplace https://github.com/tpope/vim-fireplace
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
 " Generates a list of compiler flags. Using a non-master branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
@@ -41,6 +35,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
 
+" Theme
 Plug 'mhartington/oceanic-next'
 
 " Plug 'leafgarland/typescript-vim'
@@ -62,11 +57,26 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Formatter
 Plug 'sbdchd/neoformat'
+Plug 'guns/vim-clojure-static'
+
+" Clojure Fireplace https://github.com/tpope/vim-fireplace
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Autocomplete
 " Plug 'valloric/youcompleteme'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'clojure-vim/async-clj-omni'
+" Plug 'clojure-vim/async-clj-omni'
+
+" Git
+Plug 'tpope/vim-fugitive'
+
+" Clojure development plugins
+" Plug 'kovisoft/slimv'
+Plug 'vim-scripts/paredit.vim'
+Plug 'tpope/vim-surround'
+Plug 'venantius/vim-eastwood'
+Plug 'venantius/vim-cljfmt'
+Plug 'tpope/vim-pathogen'
 
 " Initialize plugin system
 call plug#end()
@@ -78,6 +88,7 @@ endif
 " Theme
 syntax enable
 set background=dark
+let g:impact_transbg=1
 colorscheme OceanicNext
 
 " Tab and indent width
@@ -108,3 +119,5 @@ let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+
+nnoremap ff i<space><esc>
