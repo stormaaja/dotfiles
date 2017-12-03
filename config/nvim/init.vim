@@ -30,6 +30,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
+" Fuzz finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Unmanaged plugin (manually installed and updated)
@@ -78,6 +79,9 @@ Plug 'venantius/vim-eastwood'
 Plug 'venantius/vim-cljfmt'
 Plug 'tpope/vim-pathogen'
 
+" Database connection
+Plug 'vim-scripts/dbext.vim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -120,4 +124,13 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
+" Disable autoformat on save
+let g:clj_fmt_autosave = 0
+
 nnoremap ff i<space><esc>
+
+"Remove all trailing whitespace by pressing F5
+" nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" Set sync with X clipboard
+set clipboard+=unnamedplus
