@@ -85,6 +85,9 @@ Plug 'vim-scripts/dbext.vim'
 " Initialize plugin system
 call plug#end()
 
+:command MDbuild !markdown % > /tmp/%:t.html
+:command MDpreview !markdown % > /tmp/%:t.html && chromium /tmp/%:t.html
+
 if (has("termguicolors"))
  set termguicolors
 endif
@@ -100,6 +103,9 @@ set softtabstop=2
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+" Real tab for Makefile
+autocmd FileType make setlocal noexpandtab
 
 " Invisible characters (ttf-droid)
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:>,precedes:<
