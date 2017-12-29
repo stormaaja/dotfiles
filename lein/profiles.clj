@@ -1,6 +1,5 @@
-{:user {:plugins [[lein-cljfmt "0.5.7"]]
-        :dependencies [[cljfmt "0.5.1"]
-                       [jonase/eastwood "0.2.1"
-                        :exclusions [org.clojure/clojure]]]
-        :repl-options {:init (require 'cljfmt.core)}
-        :cljfmt {:indents ^:replace {#".*" [[:inner 0]]}}}}
+{:user {:plugins [[cider/cider-nrepl "0.15.1"]
+                  [refactor-nrepl "2.3.1"]
+                  [lein-zprint "0.1.16"]]
+        :dependencies [[org.clojure/tools.nrepl "0.2.13"]]
+        :zprint {:old? false}}}
