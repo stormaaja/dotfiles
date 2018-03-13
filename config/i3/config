@@ -198,4 +198,6 @@ bindsym Print exec --no-startup-id maim ~/screenshots/$(date +%Y-%m-%d-%H-%M-%S)
 bindsym Shift+Print exec --no-startup-id maim -s ~/screenshots/$(date +%Y-%m-%d-%H-%M-%S).png
 focus_follows_mouse no
 
+bindsym Shift+Ctrl+$mod+space exec --no-startup-id ~/bin/switchkb --toggle && pkill -RTMIN+12 i3blocks
+
 exec --no-startup-id compton -b
