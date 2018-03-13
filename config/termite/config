@@ -32,37 +32,103 @@ filter_unmatched_urls = true
 #modify_other_keys = false
 
 [colors]
-background = rgba(63, 63, 63, 0.95)
+# Base16 Oceanic Next
+# Scheme: Dmitri Voronianski (http://pixelhunter.me)
+
+foreground      = #C0C5CE
+foreground_bold = #C0C5CE
+cursor          = #C0C5CE
+background      = #1B2B34
+
+# 16 color space
+color0  = #1B2B34
+color1  = #EC5f67
+color2  = #99C794
+color3  = #FAC863
+color4  = #6699CC
+color5  = #C594C5
+color6  = #5FB3B3
+color7  = #C0C5CE
+color8  = #65737E
+color9  = #EC5f67
+color10 = #99C794
+color11 = #FAC863
+color12 = #6699CC
+color13 = #C594C5
+color14 = #5FB3B3
+color15 = #D8DEE9
+
+# 256 color space
+color16 = #F99157
+color17 = #AB7967
+color18 = #343D46
+color19 = #4F5B66
+color20 = #A7ADBA
+color21 = #CDD3DE
+
+
+# Solarized dark color scheme
+
+#[colors]
+#foreground = #839496
+#foreground_bold = #eee8d5
+##foreground_dim = #888888
+#background = #002b36
+#cursor = #93a1a1
+
+# if unset, will reverse foreground and background
+#highlight = #839496
+
+# colors from color0 to color254 can be set
+#color0 = #073642
+#color1 = #dc322f
+#color2 = #859900
+#color3 = #b58900
+#color4 = #268bd2
+#color5 = #d33682
+#color6 = #2aa198
+#color7 = #eee8d5
+#color8 = #002b36
+#color9 = #cb4b16
+#color10 = #586e75
+#color11 = #657b83
+#color12 = #839496
+#color13 = #6c71c4
+#color14 = #93a1a1
+#color15 = #fdf6e3
+
+#[colors]
+#background = rgba(63, 63, 63, 0.95)
 
 #cursor = #dcdccc
 #cursor_foreground = #dcdccc
-foreground = #dcdccc
-foreground_bold = #ffffff
+#foreground = #dcdccc
+#foreground_bold = #ffffff
 #background = #3f3f3f
 
 # 20% background transparency (requires a compositor)
 #background = rgba(63, 63, 63, 0.8)
 
 # if unset, will reverse foreground and background
-highlight = #2f2f2f
+#highlight = #2f2f2f
 
 # colors from color0 to color254 can be set
-color0 = #3f3f3f
-color1 = #705050
-color2 = #60b48a
-color3 = #dfaf8f
-color4 = #506070
-color5 = #dc8cc3
-color6 = #8cd0d3
-color7 = #dcdccc
-color8 = #709080
-color9 = #dca3a3
-color10 = #c3bf9f
-color11 = #f0dfaf
-color12 = #94bff3
-color13 = #ec93d3
-color14 = #93e0e3
-color15 = #ffffff
+#color0 = #3f3f3f
+#color1 = #705050
+#color2 = #60b48a
+#color3 = #dfaf8f
+#color4 = #506070
+#color5 = #dc8cc3
+#color6 = #8cd0d3
+#color7 = #dcdccc
+#color8 = #709080
+#color9 = #dca3a3
+#color10 = #c3bf9f
+#color11 = #f0dfaf
+#color12 = #94bff3
+#color13 = #ec93d3
+#color14 = #93e0e3
+#color15 = #ffffff
 
 [hints]
 #font = Monospace 12
