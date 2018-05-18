@@ -53,6 +53,8 @@
     json-mode
     xclip
     blank-mode
+    rjsx-mode
+    less-css-mode
     ))
 
 (dolist (p my-packages)
@@ -303,6 +305,9 @@
 
 (setq TeX-quote-after-quote 0)
 
+;; React (rjsx)
+(setq js2-strict-missing-semi-warning nil)
+
 ;; Other
 
 (custom-set-variables
@@ -317,7 +322,7 @@
  '(frame-background-mode (quote dark))
  '(package-selected-packages
    (quote
-    (blank-mode highlight-chars json-mode ace-window fill-column-indicator markdown-mode solarized-theme column-marker highlight-indent-guides rainbow-delimiters tagedit smex projectile paredit magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking cider)))
+    (elixir-mode reason-mode go-mode js3-mode less-css-mode rjsx-mode blank-mode highlight-chars json-mode ace-window fill-column-indicator markdown-mode solarized-theme column-marker highlight-indent-guides rainbow-delimiters tagedit smex projectile paredit magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking cider)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
