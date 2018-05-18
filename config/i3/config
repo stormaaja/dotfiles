@@ -7,7 +7,7 @@
 
 # i3 config file (v4)
 #
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
 
@@ -30,7 +30,6 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec termite
 
 # kill focused window
@@ -47,7 +46,7 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+odiaeresis focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -59,7 +58,7 @@ bindsym $mod+Right focus right
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+odiaeresis move right
 
 # Move focused workspace to right
 bindsym $mod+m move workspace to output right
@@ -84,7 +83,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# toggle tiling / floating / sticky
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+Ctrl+space sticky toggle
 
@@ -139,7 +138,7 @@ mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym odiaeresis resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -157,9 +156,8 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        # status_command $HOME/bin/i3stbrght
-	status_command i3blocks
-	position top
+     	status_command i3blocks
+       	position top
 	colors {
         	separator #586e75
         	background #2d2d2d
@@ -174,26 +172,23 @@ bar {
 # Backlight
 bindcode 232 exec --no-startup-id blight -15 && pkill -RTMIN+11 i3blocks
 bindcode 233 exec --no-startup-id blight +15 && pkill -RTMIN+11 i3blocks
-bindsym Ctrl+F11 exec --no-startup-id blight set 1 && pkill -RTMIN+11 i3blocks
-bindsym Ctrl+F12 exec --no-startup-id blight set 1500 && pkill -RTMIN+11 i3blocks
+bindsym $mod+F11 exec --no-startup-id blight set 1 && pkill -RTMIN+11 i3blocks
+bindsym $mod+F12 exec --no-startup-id blight set 1500 && pkill -RTMIN+11 i3blocks
+bindsym $mod+Shift+F11 exec --no-startup-id blight set 0 && pkill -RTMIN+11 i3blocks
 
-bindsym Shift+Ctrl+F11 exec --no-startup-id blight set 0 && pkill -RTMIN+11 i3blocks
 # Volume
 bindcode 121 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
 bindcode 122 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && pkill -RTMIN+10 i3blocks
 bindcode 123 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && pkill -RTMIN+10 i3blocks
 
 # Detect monitors
-bindcode 133 exec --no-startup-id mondet
+bindsym $mod+F8 exec --no-startup-id mondet
 
 # Lock screen with Shift+MOD+Delete or with keyboard eject hotkey
 bindsym $mod+Shift+Delete exec --no-startup-id sleep 1 && lockscreen --monitor-off
-bindsym XF86Eject exec --no-startup-id sleep 1 && lockscreen --monitor-off
 
 # PrtScr (Screenshot)
-#bindsym Print exec --no-startup-id scrot '%Y-%m-%d-%H-%M-%S_$wx$h_scrot.png' -e 'mv $f ~/screenshots/'
 bindsym Ctrl+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
-#bindsym Shift+Print exec --no-startup-id maim -i $(xdotool getactivewindow) ~/screenshots/$(date +%Y-%m-%d-%H-%M-%S).png
 bindsym Print exec --no-startup-id maim ~/screenshots/$(date +%Y-%m-%d-%H-%M-%S).png
 bindsym Shift+Print exec --no-startup-id maim -s ~/screenshots/$(date +%Y-%m-%d-%H-%M-%S).png
 focus_follows_mouse no
