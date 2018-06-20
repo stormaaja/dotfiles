@@ -264,6 +264,11 @@
 ;(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("lein-env" . enh-ruby-mode))
 
+;(eval-after-load 'flycheck '(flycheck-clojure-setup))
+;(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;(eval-after-load 'flycheck  '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
+
 (defun cider-start-http-server ()
   (interactive)
   (cider-load-current-buffer)
@@ -271,7 +276,6 @@
     (cider-repl-set-ns ns)
     (cider-interactive-eval (format "(println '(def server (%s/start))) (println 'server)" ns))
     (cider-interactive-eval (format "(def server (%s/start)) (println server)" ns))))
-
 
 (defun cider-refresh ()
   (interactive)
@@ -287,7 +291,6 @@
      (define-key clojure-mode-map (kbd "C-M-r") 'cider-refresh)
      (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
-
 
 ;; JS
 
@@ -322,7 +325,7 @@
  '(frame-background-mode (quote dark))
  '(package-selected-packages
    (quote
-    (elixir-mode reason-mode go-mode js3-mode less-css-mode rjsx-mode blank-mode highlight-chars json-mode ace-window fill-column-indicator markdown-mode solarized-theme column-marker highlight-indent-guides rainbow-delimiters tagedit smex projectile paredit magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking cider)))
+    (kibit-helper flycheck-pos-tip flycheck-clojure graphviz-dot-mode elixir-mode reason-mode go-mode js3-mode less-css-mode rjsx-mode blank-mode highlight-chars json-mode ace-window fill-column-indicator markdown-mode solarized-theme column-marker highlight-indent-guides rainbow-delimiters tagedit smex projectile paredit magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking cider)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
