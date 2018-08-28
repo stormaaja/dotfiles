@@ -21,41 +21,47 @@
   '(
     ace-window
     avy
+    blank-mode
     cider
     clojure-mode-extra-font-locking
     clojure-mode
-    column-marker
+    dash
     exec-path-from-shell
     fill-column-indicator
+    flycheck
+    flycheck-pos-tip
+    flycheck-clojure
+    git-commit
+    ghub
     highlight-indent-guides
     ido-ubiquitous
     ido-completing-read+
-    magit
-    git-commit
-    ghub
+    js3-mode
+    json-mode
+    kibit-helper
+    less-css-mode
     let-alist
+    magit
     magit-popup
     markdown-mode
     memoize
-    paredit
     projectile
     pkg-info
     epl
     queue
     rainbow-delimiters
+    rjsx-mode
+    s
     seq
+    smartparens
     smex
+    solarized-theme
     spinner
     tagedit
-    dash
-    s
+    tide
     with-editor async
-    json-mode
     xclip
-    blank-mode
-    rjsx-mode
-    less-css-mode
-    ))
+   ))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -75,11 +81,12 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-(setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (require 'recentf)
+(setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (recentf-mode 1)
 (setq recentf-max-menu-items 40)
 
+(require 'ido)
 (ido-mode t)
 
 (setq ido-enable-flex-matching t)
@@ -95,11 +102,12 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x C-o") 'ace-window)
 
+(require 'smex)
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 
-(projectile-global-mode)
+(projectile-mode)
 
 ;; UI
 (require 'fill-column-indicator)
@@ -123,11 +131,9 @@
 
 (set-face-attribute 'default nil :height 140)
 
-(setq
-      x-select-enable-clipboard t
-      x-select-enable-primary t
+(setq select-enable-clipboard t
+      select-enable-primary t
       save-interprogram-paste-before-kill t
-      apropos-do-all t
       mouse-yank-at-point t)
 
 (blink-cursor-mode 0)
@@ -172,7 +178,7 @@
 (setq auto-save-default nil)
 
 (defun toggle-comment-on-line ()
-  "comment or uncomment current line"
+  "Comment or uncomment current line."
   (interactive)
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
@@ -185,8 +191,6 @@
   (keyboard-quit))
 
 (setq electric-indent-mode nil)
-
-(setq highlight-indent-guides-method 'character)
 
 ;; Misc
 
@@ -201,13 +205,14 @@
 
 ;; Elisp
 
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+(autoload 'turn-on-smartparens-strict-mode "smartparens" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'turn-on-smartparens-strict-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'turn-on-smartparens-strict-mode)
+(add-hook 'ielm-mode-hook             #'turn-on-smartparens-strict-mode)
+(add-hook 'lisp-mode-hook             #'turn-on-smartparens-strict-mode)
+(add-hook 'lisp-interaction-mode-hook #'turn-on-smartparens-strict-mode)
+(add-hook 'scheme-mode-hook           #'turn-on-smartparens-strict-mode)
+
 
 ;; eldoc-mode shows documentation in the minibuffer when writing code
 ;; http://www.emacswiki.org/emacs/ElDoc
@@ -215,15 +220,24 @@
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 
+;;; Smartparens
+
+(require 'smartparens-config)
+
+(smartparens-global-mode)
+(show-smartparens-global-mode)
+(sp-use-paredit-bindings)
+
 ;; Clojure
 
-(add-hook 'clojure-mode-hook 'enable-paredit-mode)
+(add-hook 'clojure-mode-hook 'turn-on-smartparens-strict-mode)
 
 (add-hook 'clojure-mode-hook 'subword-mode)
 
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
 (require 'clojure-mode-extra-font-locking)
+(require 'cider)
 
 (defun clj-mode ()
   (setq inferior-lisp-program "lein repl")
@@ -233,6 +247,7 @@
       (1 font-lock-keyword-face))
      ("(\\(background?\\)"
       (1 font-lock-keyword-face))))
+
   (define-clojure-indent (fact 1))
   (define-clojure-indent (facts 1))
   (local-set-key (kbd "RET") 'newline-and-indent))
@@ -242,7 +257,7 @@
 (setq clojure-indent-style :align-arguments)
 
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(add-hook 'cider-mode-hook 'enable-paredit-mode)
+(add-hook 'cider-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'cider-mode-hook 'turn-on-fci-mode)
 (add-hook 'cider-mode-hook 'subword-mode)
 (add-hook 'cider-mode-hook 'rainbow-delimiters-mode)
@@ -257,15 +272,33 @@
 
 (setq cider-repl-wrap-history t)
 
-(add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
-
+(add-hook 'cider-repl-mode-hook 'turn-on-smartparens-strict-mode)
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
 ;(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("lein-env" . enh-ruby-mode))
 
-;(eval-after-load 'flycheck '(flycheck-clojure-setup))
-;(add-hook 'after-init-hook #'global-flycheck-mode)
+(defun set-clojure-indents ()
+  (define-clojure-indent
+    (defroutes 'defun)
+    (GET 2)
+    (POST 2)
+    (PUT 2)
+    (DELETE 2)
+    (HEAD 2)
+    (ANY 2)
+    (OPTIONS 2)
+    (PATCH 2)
+    (rfn 2)
+    (let-routes 1)
+    (context 2)))
+
+(add-hook 'clojure-mode-hook 'set-clojure-indents)
+
+;; Flycheck
+
+(eval-after-load 'flycheck '(flycheck-clojure-setup))
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;(eval-after-load 'flycheck  '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
 
@@ -309,7 +342,53 @@
 (setq TeX-quote-after-quote 0)
 
 ;; React (rjsx)
-(setq js2-strict-missing-semi-warning nil)
+;(setq js2-strict-missing-semi-warning nil)
+
+; React (Thanks Tuomas)
+;;; RJSX: js2-mode with jsx
+
+(defun enable-rjsx-mode-hook ()
+  (setq mode-name "RJSX"))
+
+(add-hook 'rjsx-mode-hook #'enable-rjsx-mode-hook)
+
+;;; TypeScript
+
+(require 'tide)
+
+(customize-set-variable 'typescript-indent-level 2)
+
+(defun tide-common-setup ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode)
+  (eldoc-mode)
+  (tide-hl-identifier-mode)
+  (company-mode))
+
+;;; TypeScript: .ts sources
+
+(add-hook 'typescript-mode-hook #'tide-common-setup)
+
+;;; TypeScript: .js sources
+
+(add-hook 'js2-mode-hook #'tide-common-setup)
+
+;;; TypeScript: .tsx sources
+
+(defun tide-tsx-setup ()
+  (when (string-equal "tsx" (file-name-extension buffer-file-name))
+    (tide-common-setup)))
+
+(add-hook 'web-mode-hook #'tide-tsx-setup)
+
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+
+(flycheck-add-mode 'typescript-tslint 'web-mode)
+
+;;; TypeScript: .jsx sources
+
+(flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
 
 ;; Other
 
@@ -325,7 +404,7 @@
  '(frame-background-mode (quote dark))
  '(package-selected-packages
    (quote
-    (kibit-helper flycheck-pos-tip flycheck-clojure graphviz-dot-mode elixir-mode reason-mode go-mode js3-mode less-css-mode rjsx-mode blank-mode highlight-chars json-mode ace-window fill-column-indicator markdown-mode solarized-theme column-marker highlight-indent-guides rainbow-delimiters tagedit smex projectile paredit magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking cider)))
+    (tide flycheck smartparens kibit-helper flycheck-pos-tip flycheck-clojure graphviz-dot-mode elixir-mode reason-mode go-mode js3-mode less-css-mode blank-mode json-mode ace-window fill-column-indicator markdown-mode solarized-theme highlight-indent-guides rainbow-delimiters tagedit smex projectile magit exec-path-from-shell clojure-mode-extra-font-locking cider)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
