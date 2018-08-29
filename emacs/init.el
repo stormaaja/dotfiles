@@ -118,7 +118,7 @@
 
 (menu-bar-mode -1)
 
-(global-linum-mode)
+(global-display-line-numbers-mode)
 
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
