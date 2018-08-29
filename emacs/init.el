@@ -55,12 +55,12 @@
     seq
     smartparens
     smex
-    solarized-theme
     spinner
     tagedit
     tide
     with-editor async
     xclip
+    zenburn
    ))
 
 (dolist (p my-packages)
@@ -127,7 +127,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/themes")
 
-(load-theme 'tomorrow-night-bright t)
+;(load-theme 'tomorrow-night-bright t)
+(load-theme 'zenburn t)
 
 (set-face-attribute 'default nil :height 140)
 
