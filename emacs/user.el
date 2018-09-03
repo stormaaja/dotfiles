@@ -127,7 +127,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/themes")
 
-;(load-theme 'tomorrow-night-bright t)
 (load-theme 'zenburn t)
 
 (set-face-attribute 'default nil :height 140)
@@ -390,26 +389,3 @@
 ;;; TypeScript: .jsx sources
 
 (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
-
-;; Other
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(coffee-tab-width 2)
- '(custom-safe-themes
-   (quote
-    ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
- '(frame-background-mode (quote dark))
- '(package-selected-packages
-   (quote
-    (tide flycheck smartparens kibit-helper flycheck-pos-tip flycheck-clojure graphviz-dot-mode elixir-mode reason-mode go-mode js3-mode less-css-mode blank-mode json-mode ace-window fill-column-indicator markdown-mode solarized-theme highlight-indent-guides rainbow-delimiters tagedit smex projectile magit exec-path-from-shell clojure-mode-extra-font-locking cider)))
- '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
