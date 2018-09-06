@@ -38,7 +38,6 @@
     ido-completing-read+
     js3-mode
     json-mode
-    kibit-helper
     less-css-mode
     let-alist
     magit
