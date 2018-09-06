@@ -240,6 +240,8 @@
 (require 'clojure-mode-extra-font-locking)
 (require 'cider)
 
+(setq cider-inject-dependencies-at-jack-in nil)
+
 (defun clj-mode ()
   (setq inferior-lisp-program "lein repl")
   (font-lock-add-keywords
