@@ -49,6 +49,7 @@
     epl
     queue
     rainbow-delimiters
+    restclient
     rjsx-mode
     s
     seq
