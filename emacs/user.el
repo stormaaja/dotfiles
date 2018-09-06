@@ -259,7 +259,6 @@
 
 (setq clojure-indent-style :align-arguments)
 
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (add-hook 'cider-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'cider-mode-hook 'turn-on-fci-mode)
 (add-hook 'cider-mode-hook 'subword-mode)
