@@ -293,7 +293,9 @@
     (PATCH 2)
     (rfn 2)
     (let-routes 1)
-    (context 2)))
+    (context 2)
+    (defschema 0)
+    (route-middleware 0)))
 
 (add-hook 'clojure-mode-hook 'set-clojure-indents)
 
