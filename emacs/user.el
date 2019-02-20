@@ -29,14 +29,13 @@
     exec-path-from-shell
     fill-column-indicator
     flycheck
-    flycheck-pos-tip
     flycheck-clojure
     git-commit
     ghub
     highlight-indent-guides
     ido-ubiquitous
     ido-completing-read+
-    js3-mode
+    js2-mode
     json-mode
     less-css-mode
     let-alist
@@ -44,6 +43,7 @@
     magit-popup
     markdown-mode
     memoize
+    nasm-mode
     projectile
     pkg-info
     epl
@@ -204,6 +204,14 @@
 
 (setq inhibit-startup-message t)
 
+;;; Smartparens
+
+(require 'smartparens-config)
+
+(smartparens-global-mode)
+(show-smartparens-global-mode)
+(sp-use-paredit-bindings)
+
 ;; Elisp
 
 (autoload 'turn-on-smartparens-strict-mode "smartparens" "Turn on pseudo-structural editing of Lisp code." t)
@@ -220,14 +228,6 @@
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
-
-;;; Smartparens
-
-(require 'smartparens-config)
-
-(smartparens-global-mode)
-(show-smartparens-global-mode)
-(sp-use-paredit-bindings)
 
 ;; Clojure
 
@@ -304,7 +304,7 @@
 (eval-after-load 'cider '(flycheck-clojure-setup))
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;(eval-after-load 'flycheck  '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
+;(eval-after-load 'flycheck '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
 
 (defun cider-start-http-server ()
   (interactive)
@@ -331,19 +331,30 @@
 
 ;; JS
 
-(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
-(add-hook 'js-mode-hook 'subword-mode)
+(defun js-mode ()
+  (local-set-key (kbd "RET") 'newline-and-indent))
+
+(add-to-list 'auto-mode-alist '("\\.m?js$" . js2-mode))
+(add-hook 'js-mode-hook 'clj-mode)
+;(add-hook 'js-mode-hook 'subword-mode)
+(add-hook 'js-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'html-mode-hook 'subword-mode)
+
+
 (setq js-indent-level 2)
-(eval-after-load "sgml-mode"
-  '(progn
-     (require 'tagedit)
-     (tagedit-add-paredit-like-keybindings)
-     (add-hook 'html-mode-hook (lambda () (tagedit-mode 1)))))
+(setq js2-basic-offset 2)
+(setq js2-strict-missing-semi-warning nil)
+
+; (eval-after-load "sgml-mode"
+;   '(progn
+;      (require 'tagedit)
+;      (tagedit-add-paredit-like-keybindings)
+;      (add-hook 'html-mode-hook (lambda () (tagedit-mode 1)))))
 
 ;; Latex
 
 (setq TeX-quote-after-quote 0)
+(setq flycheck-check-syntax-automatically '(save mode-enable))
 
 ;; React (rjsx)
 ;(setq js2-strict-missing-semi-warning nil)
@@ -351,49 +362,88 @@
 ; React (Thanks Tuomas)
 ;;; RJSX: js2-mode with jsx
 
-(defun enable-rjsx-mode-hook ()
-  (setq mode-name "RJSX"))
+; (defun enable-rjsx-mode-hook ()
+;   (setq mode-name "RJSX"))
 
-(add-hook 'rjsx-mode-hook #'enable-rjsx-mode-hook)
+; (add-hook 'rjsx-mode-hook #'enable-rjsx-mode-hook)
 
 ;;; TypeScript
 
-(require 'tide)
+; (require 'tide)
 
-(customize-set-variable 'typescript-indent-level 2)
+; (customize-set-variable 'typescript-indent-level 2)
 
-(defun tide-common-setup ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode)
-  (eldoc-mode)
-  (tide-hl-identifier-mode)
-  (company-mode))
+; (defun tide-common-setup ()
+;   (interactive)
+;   (tide-setup)
+;   (flycheck-mode)
+;   (eldoc-mode)
+;   (tide-hl-identifier-mode)
+;   (company-mode))
 
 ;;; TypeScript: .ts sources
 
-(add-hook 'typescript-mode-hook #'tide-common-setup)
+; (add-hook 'typescript-mode-hook #'tide-common-setup)
 
 ;;; TypeScript: .js sources
 
-(add-hook 'js2-mode-hook #'tide-common-setup)
+; (add-hook 'js2-mode-hook #'tide-common-setup)
 
 ;;; TypeScript: .tsx sources
 
-(defun tide-tsx-setup ()
-  (when (string-equal "tsx" (file-name-extension buffer-file-name))
-    (tide-common-setup)))
+; (defun tide-tsx-setup ()
+;   (when (string-equal "tsx" (file-name-extension buffer-file-name))
+;     (tide-common-setup)))
 
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-(add-hook 'web-mode-hook
-          (lambda ()
-            (when (string-equal "tsx" (file-name-extension buffer-file-name))
-              (setup-tide-mode))))
+; (require 'web-mode)
+; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+; (add-hook 'web-mode-hook
+;           (lambda ()
+;             (when (string-equal "tsx" (file-name-extension buffer-file-name))
+;               (setup-tide-mode))))
 
 ;; enable typescript-tslint checker
-(flycheck-add-mode 'typescript-tslint 'web-mode)
+; (flycheck-add-mode 'typescript-tslint 'web-mode)
 
 ;;; TypeScript: .jsx sources
 
-(flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
+; (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
+
+;;; Java
+;(setq jdee-server-dir "/home/matti/tmp/jdee-server/target/")
+
+;; nasm
+
+(add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
+
+;;; Custom syntax
+
+(require 'generic-x)
+
+(defun set-emfun-indent ()
+  (setq tab-width 2)
+  (setq-default indent-tabs-mode nil)
+  (setq c-default-style "bsd"
+        c-basic-offset 2))
+
+(define-generic-mode
+    'emfun-mode
+  '("#")
+  '("->" "print" "true" "false" "map" "reduce" "if" "cond" "inc" "str"
+    "int" "double" "string" "boolean" "any")
+  '()
+  '("\\.emf$")
+  '(set-emfun-indent)
+  "A mode for emFun files")
+
+(define-generic-mode
+      'emcee-mode                         ;; name of the mode to create
+      '("//")                           ;; comments start with '!!'
+      '("print" "return"
+        "int" "string" "double" "bool" "void")        ;; some keywords
+      '(("=" . 'font-lock-operator)     ;; '=' is an operator
+        (";" . 'font-lock-builtin))     ;; ';' is a built-in
+      '("\\.emc$")                      ;; files for which to activate this mode
+       nil                              ;; other functions to call
+      "A mode for emCee files"            ;; doc string for this mode
+    )
