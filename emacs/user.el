@@ -23,6 +23,7 @@
     avy
     blank-mode
     cider
+    clj-refactor
     clojure-mode-extra-font-locking
     clojure-mode
     dash
@@ -240,7 +241,9 @@
 (require 'clojure-mode-extra-font-locking)
 (require 'cider)
 
-(setq cider-inject-dependencies-at-jack-in nil)
+;(setq cider-inject-dependencies-at-jack-in nil)
+
+(setq cider-latest-middleware-version "0.21.2-SNAPSHOT")
 
 (defun clj-mode ()
   (setq inferior-lisp-program "lein repl")
@@ -295,9 +298,39 @@
     (let-routes 1)
     (context 2)
     (defschema 0)
-    (route-middleware 0)))
+    (defq 0)
+    (defq-hid 0)
+    (route-middleware 0)
+    (form-to 1)
+    (match 1)
+    (are 2)
+    (checking 2)
+    (async 1)
+    (select 1)
+    (insert 1)
+    (update 1)
+    (delete 1)
+    (run* 1)
+    (fresh 1)
+    (extend-freeze 2)
+    (extend-thaw 1)
+    (go-loop 1)
+    (this-as 1)
+    (specify 1)
+    (specify! 1)
+    (s/fdef 1)))
 
 (add-hook 'clojure-mode-hook 'set-clojure-indents)
+
+(require 'clj-refactor)
+
+(defun set-clj-refactor ()
+  (clj-refactor-mode 1)
+  (yas-minor-mode 1) ; for adding require/use/import statements
+  ;; This choice of keybinding leaves cider-macroexpand-1 unbound
+  (cljr-add-keybindings-with-prefix "C-c C-m"))
+
+(add-hook 'clojure-mode-hook #'set-clj-refactor)
 
 ;; Flycheck
 
