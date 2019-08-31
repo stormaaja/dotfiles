@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 " Theme
 Plug 'mhartington/oceanic-next'
 " Editor config
