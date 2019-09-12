@@ -7,26 +7,26 @@ Plug 'editorconfig/editorconfig-vim'
 " Clojure
 
 " Acid Clojure plugin https://github.com/clojure-vim/acid.nvim
-"Plug 'clojure-vim/acid.nvim'
+" Plug 'clojure-vim/acid.nvim'
 
 " Rainbow (parenthesis) https://github.com/luochen1990/rainbow
-"Plug 'luochen1990/rainbow'
+" Plug 'luochen1990/rainbow'
 
-"Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
 
-"Plug '~/projects/nvim-parlint'
+" Plug '~/projects/nvim-parlint'
 
 " deoplete.nvim (Completion
-"if has('nvim')
+" if has('nvim')
 "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-"  Plug 'Shougo/deoplete.nvim'
-"  Plug 'roxma/nvim-yarp'
-"  Plug 'roxma/vim-hug-neovim-rpc'
-"endif
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 
 " clj-async.nvim (Completion)
-"Plug 'clojure-vim/async-clj-omni'
+" Plug 'clojure-vim/async-clj-omni'
 
 " Parinfer (parenthesis)
 " Plug 'snoe/nvim-parinfer.js'
@@ -113,4 +113,4 @@ nnoremap fg vipgq<Enter>
 " nnoremap <Left> <Nop>
 " nnoremap <Rigth> <Nop>
 
-source ~/projects/nvim-parlint/parlint.vim
+" source ~/projects/nvim-parlint/parlint.vim
