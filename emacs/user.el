@@ -393,57 +393,56 @@
 (setq flycheck-check-syntax-automatically '(save mode-enable))
 
 ;; React (rjsx)
-;(setq js2-strict-missing-semi-warning nil)
+(setq js2-strict-missing-semi-warning nil)
 
 ; React (Thanks Tuomas)
 ;;; RJSX: js2-mode with jsx
 
-; (defun enable-rjsx-mode-hook ()
-;   (setq mode-name "RJSX"))
+(defun enable-rjsx-mode-hook ()
+  (setq mode-name "RJSX"))
 
-; (add-hook 'rjsx-mode-hook #'enable-rjsx-mode-hook)
+(add-hook 'rjsx-mode-hook #'enable-rjsx-mode-hook)
 
 ;;; TypeScript
 
-; (require 'tide)
+(require 'tide)
 
-; (customize-set-variable 'typescript-indent-level 2)
+(customize-set-variable 'typescript-indent-level 2)
 
-; (defun tide-common-setup ()
-;   (interactive)
-;   (tide-setup)
-;   (flycheck-mode)
-;   (eldoc-mode)
-;   (tide-hl-identifier-mode)
-;   (company-mode))
+(defun tide-common-setup ()
+  (tide-setup)
+  (flycheck-mode)
+  (eldoc-mode)
+  (tide-hl-identifier-mode)
+  (company-mode))
 
 ;;; TypeScript: .ts sources
 
-; (add-hook 'typescript-mode-hook #'tide-common-setup)
+(add-hook 'typescript-mode-hook #'tide-common-setup)
 
 ;;; TypeScript: .js sources
 
-; (add-hook 'js2-mode-hook #'tide-common-setup)
+(add-hook 'js2-mode-hook #'tide-common-setup)
 
 ;;; TypeScript: .tsx sources
 
-; (defun tide-tsx-setup ()
-;   (when (string-equal "tsx" (file-name-extension buffer-file-name))
-;     (tide-common-setup)))
+(defun tide-tsx-setup ()
+  (when (string-equal "tsx" (file-name-extension buffer-file-name))
+    (tide-common-setup)))
 
-; (require 'web-mode)
-; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-; (add-hook 'web-mode-hook
-;           (lambda ()
-;             (when (string-equal "tsx" (file-name-extension buffer-file-name))
-;               (setup-tide-mode))))
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
 
 ;; enable typescript-tslint checker
-; (flycheck-add-mode 'typescript-tslint 'web-mode)
+(flycheck-add-mode 'typescript-tslint 'web-mode)
 
 ;;; TypeScript: .jsx sources
 
-; (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
+(flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
 
 ;;; Java
 ;(setq jdee-server-dir "/home/matti/tmp/jdee-server/target/")
