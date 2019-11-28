@@ -65,7 +65,7 @@
     web-mode
     with-editor async
     xclip
-    zenburn
+    zenburn-theme
    ))
 
 (dolist (p my-packages)
