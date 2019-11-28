@@ -387,11 +387,6 @@
 ;      (tagedit-add-paredit-like-keybindings)
 ;      (add-hook 'html-mode-hook (lambda () (tagedit-mode 1)))))
 
-;; Latex
-
-(setq TeX-quote-after-quote 0)
-(setq flycheck-check-syntax-automatically '(save mode-enable))
-
 ;; React (rjsx)
 (setq js2-strict-missing-semi-warning nil)
 
