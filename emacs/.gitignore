@@ -4,3 +4,7 @@ backups
 elpa
 network-security.data
 projectile-bookmarks.eld
+.recentf*
+.smex-items
+ac-comphist.dat
+ido.last*
