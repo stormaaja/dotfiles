@@ -22,6 +22,17 @@
 
 (defun setup-tide-mode ()
   (interactive)
+
+  (setq web-mode-markup-indent-offset 2)
+  (setq js-indent-level 2)
+  (setq javascript-indent-level 2) ; javascript-mode
+  (setq js2-basic-offset 2) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
+  (setq web-mode-markup-indent-offset 2) ; web-mode, html tag in html file
+  (setq web-mode-css-indent-offset 2) ; web-mode, css in html file
+  (setq web-mode-code-indent-offset 2) ; web-mode, js code in html file
+  (setq css-indent-offset 2) ; css-mode
+  (setq indent-tabs-mode nil)
+
   (tide-setup)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
@@ -30,9 +41,7 @@
   ;; company is an optional dependency. You have to
   ;; install it separately via package-install
   ;; `M-x package-install [ret] company`
-  (company-mode +1)
-  (setq web-mode-markup-indent-offset 2)
-  (setq js-indent-level 2))
+  (company-mode +1))
 
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
