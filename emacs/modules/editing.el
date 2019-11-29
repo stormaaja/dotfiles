@@ -1,7 +1,5 @@
 ;; Editing
 
-; Set correct carriage returns
-(set-buffer-file-coding-system 'unix)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (standard-display-ascii ?\t "^I")
 (setq hippie-expand-try-functions-list
