@@ -57,7 +57,7 @@
 
 ;; Load modules
 (when (eq system-type 'gnu/linux)
-  (load "./modules/linux.el"))
+  (load-module "linux.el"))
 
 ;; Shell
 (when (memq window-system '(mac ns))
@@ -79,5 +79,6 @@
    "navigation.el"
    "typescript2.el"
    "autocomplete.el"
+   "simli.el"
    ))
 
