@@ -1,0 +1,3 @@
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export PATH="${PATH}:${HOME}/programs/sonar-scanner-4.2.0.1873-macosx/bin"
+export PATH="$PATH:${HOME}/programs/gcc-arm-none-eabi-8-2019-q3-update/bin"
