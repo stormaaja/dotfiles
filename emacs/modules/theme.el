@@ -1,3 +1,2 @@
-(use-packages '(zenburn-theme))
-
-(load-theme 'zenburn t)
+(use-packages '(solarized-theme))
+(load-theme 'solarized-light t)
