@@ -68,6 +68,7 @@
    "ui.el"
    "flycheck.el"
    "theme.el"
+   "editing.el"
    ;"javascript.el"
    ;"typescript.el"
    "ido.el"
