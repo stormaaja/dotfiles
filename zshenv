@@ -1,4 +1,4 @@
-VISUAL=emacs
+VISUAL=emacsclient
 path=(~/bin $path[@])
 # alias emacs="emacs -nw"
 
@@ -9,4 +9,3 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 export PATH="$PATH:./node_modules/.bin"
 
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-

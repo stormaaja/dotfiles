@@ -1,4 +1,4 @@
-EDITOR=emacs
+EDITOR=emacsclient
 VISUAL="$EDITOR"
 GIT_EDITOR="$EDITOR"
 typeset -U path
@@ -10,4 +10,3 @@ alias vi="nvim"
 # export NPM_PACKAGES="${HOME}/.npm-global"
 # export PATH="${HOME}/.npm-global/bin:${PATH}"
 # export MANPATH="${NPM_PACKAGES}/share/man:${MANPATH}"
-
