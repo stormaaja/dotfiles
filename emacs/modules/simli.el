@@ -6,7 +6,7 @@
 
 (define-generic-mode
     'simli-mode
-  '("#")
+  '(";")
   '("->" "prn" "true" "false" "map" "reduce" "if" "cond" "inc" "str"
     "int" "double" "string" "boolean" "defn")
   '()
