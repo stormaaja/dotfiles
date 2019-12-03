@@ -43,7 +43,9 @@
 ;(add-hook 'before-save-hook 'tide-format-before-save)
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
-
+(flycheck-add-mode 'javascript-eslint 'typescript-mode)
+(add-hook 'typescript-mode-hook
+  '(flycheck-select-checker 'javascript-eslint))
 
 ;; TSX
 
@@ -54,15 +56,18 @@
             (when (string-equal "tsx" (file-name-extension buffer-file-name))
               (setup-tide-mode))))
 ;; enable typescript-tslint checker
-(flycheck-add-mode 'javascript-eslint 'web-mode)
-
+;; (flycheck-add-mode 'javascript-eslint 'web-mode)
+(add-hook 'web-mode-hook
+  '(flycheck-select-checker 'javascript-eslint))
 
 ;; Javascript
 
 (add-hook 'js2-mode-hook #'setup-tide-mode)
 ;; configure javascript-tide checker to run after your default javascript checker
-;(flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
 
+(flycheck-add-mode 'javascript-eslint 'js2-mode)
+(add-hook 'js2-mode-hook
+  '(flycheck-select-checker 'javascript-eslint))
 
 ;; JSX
 
@@ -73,8 +78,9 @@
             (when (string-equal "jsx" (file-name-extension buffer-file-name))
               (setup-tide-mode))))
 ;; configure jsx-tide checker to run after your default jsx checker
+;;(flycheck-add-mode 'javascript-eslint 'web-mode)
+
 (flycheck-add-mode 'javascript-eslint 'web-mode)
-;(flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
 
 (add-hook 'js2-mode-hook 'prettier-js-mode)
 (add-hook 'web-mode-hook 'prettier-js-mode)
