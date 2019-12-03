@@ -76,10 +76,9 @@
    ;"custom-syntax.el"
    "smartparens.el"
    "elisp.el"
-   ;"git.el"
+   "git.el"
    "navigation.el"
    "typescript2.el"
    "autocomplete.el"
    "simli.el"
    ))
-
