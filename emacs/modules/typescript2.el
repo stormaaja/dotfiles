@@ -36,6 +36,10 @@
   (company-mode +1)
   (add-node-modules-path))
 
+(defun my/set-eslint ()
+  (flycheck-mode)
+  (flycheck-select-checker 'javascript-eslint))
+
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
@@ -44,8 +48,7 @@
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 (flycheck-add-mode 'javascript-eslint 'typescript-mode)
-(add-hook 'typescript-mode-hook
-  '(flycheck-select-checker 'javascript-eslint))
+(add-hook 'typescript-mode-hook #'my/set-eslint)
 
 ;; TSX
 
@@ -57,8 +60,7 @@
               (setup-tide-mode))))
 ;; enable typescript-tslint checker
 ;; (flycheck-add-mode 'javascript-eslint 'web-mode)
-(add-hook 'web-mode-hook
-  '(flycheck-select-checker 'javascript-eslint))
+(add-hook 'web-mode-hook #'my/set-eslint)
 
 ;; Javascript
 
@@ -66,8 +68,7 @@
 ;; configure javascript-tide checker to run after your default javascript checker
 
 (flycheck-add-mode 'javascript-eslint 'js2-mode)
-(add-hook 'js2-mode-hook
-  '(flycheck-select-checker 'javascript-eslint))
+(add-hook 'js2-mode-hook #'my/set-eslint)
 
 ;; JSX
 
