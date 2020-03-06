@@ -37,6 +37,7 @@
   (add-node-modules-path))
 
 (defun my/set-eslint ()
+  (add-node-modules-path)
   (flycheck-mode)
   (flycheck-select-checker 'javascript-eslint))
 
