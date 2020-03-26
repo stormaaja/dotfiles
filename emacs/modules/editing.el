@@ -46,3 +46,8 @@
   (keyboard-quit))
 
 (setq electric-indent-mode nil)
+
+;; Start Emacs server to enable opening files in current window
+(require 'server)
+(unless (server-running-p)
+  (server-start))

@@ -14,8 +14,3 @@
 
 (setq mac-function-modifier 'control)
 (setq mac-command-modifier 'meta)
-
-;; Start Emacs server to enable opening files in current window
-(require 'server)
-(unless (server-running-p)
-  (server-start))
