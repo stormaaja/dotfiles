@@ -14,12 +14,6 @@
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-
-(add-to-list 'load-path "~/.emacs.d/themes")
-
-(load-theme 'zenburn t)
-
 (set-face-attribute 'default nil :height 140)
 
 (setq select-enable-clipboard t
