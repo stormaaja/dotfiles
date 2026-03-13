@@ -35,7 +35,7 @@ if [ $MIC_ENABLED == "[on]" ]; then
 fi
 VOLUME=$(amixer get Master | grep 'Right:' | awk '{print $5}' | sed 's/[^0-9]*//g')
 
-DATE=$(date +'%Y-%m-%d %I:%M:%S')
+DATE=$(date +'%Y-%m-%d %H:%M:%S')
 
 BATTERY=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'percentage' | awk '{print $2}' | sed 's/%//g')
 BATTERY_ICON=$BATTERY_ICON_FULL
