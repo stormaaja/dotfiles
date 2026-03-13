@@ -1,0 +1,58 @@
+#!/bin/bash
+
+BRIGHTNESS_ICON="☼"
+VOLUME_ICON="🔊"
+MIC_ICON="🎤"
+HEADPHONES_ICON_CONNECTED="🎧"
+MUTED_ICON="🔇"
+BATTERY_ICON_FULL="🔋"
+BATTERY_ICON_EMPTY="🪫"
+CHARGING_ICON="⚡"
+
+HEADPHONES_ICON=""
+
+BT_HEADSETS="WH-1000XM5|Jabra Elite 3"
+
+# Get brightness integer value
+BRIGHTNESS=$(light | awk '{print int($1+0.5)}')
+BLUETOOTH_DEVICES=$(bluetoothctl devices Connected)
+
+BLUETOOTH_HEADSETS_CONNECTED=$(echo $BLUETOOTH_DEVICES | grep -c -E "$BT_HEADSETS")
+if [ $BLUETOOTH_HEADSETS_CONNECTED -gt 0 ]; then
+    HEADPHONES_ICON=$HEADPHONES_ICON_CONNECTED
+fi
+
+ENABLED=$(amixer get Master | grep 'Right:' | awk '{print $6}')
+if [ $ENABLED == "[off]" ]; then
+    VOLUME_ICON=$MUTED_ICON
+fi
+
+MIC_ENABLED_ICON=""
+
+MIC_ENABLED=$(amixer get Capture | grep -E 'Right:|Mono:' | awk '{print $5}')
+if [ $MIC_ENABLED == "[on]" ]; then
+    MIC_ENABLED_ICON=$MIC_ICON
+fi
+VOLUME=$(amixer get Master | grep 'Right:' | awk '{print $5}' | sed 's/[^0-9]*//g')
+
+DATE=$(date +'%Y-%m-%d %I:%M:%S')
+
+BATTERY=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'percentage' | awk '{print $2}' | sed 's/%//g')
+BATTERY_ICON=$BATTERY_ICON_FULL
+if [ $BATTERY -lt 20 ]; then
+    BATTERY_ICON=$BATTERY_ICON_EMPTY
+fi
+
+if [ $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'state' | awk '{print $2}') == "charging" ]; then
+    BATTERY_ICON=$CHARGING_ICON
+fi
+
+NOTIFICATIONS=$($HOME/.local/bin/listnotifications)
+
+KEYBOARD_LAYOUT=$(swaymsg -t get_inputs | jq 'map(select(has("xkb_active_layout_name")))[0].xkb_active_layout_name' | sed 's/"//g')
+KEYBOARD_LAYOUT_ICON="🇺🇸"
+if [ $KEYBOARD_LAYOUT == "Finnish" ]; then
+    KEYBOARD_LAYOUT_ICON="🇫🇮"
+fi
+
+echo "$NOTIFICATIONS | $HEADPHONES_ICON $MIC_ENABLED_ICON $VOLUME_ICON $VOLUME | $BRIGHTNESS_ICON $BRIGHTNESS | $BATTERY_ICON $BATTERY | $KEYBOARD_LAYOUT_ICON $DATE"
