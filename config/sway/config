@@ -14,11 +14,6 @@ set $term foot
 # Your preferred application launcher
 set $menu wmenu-run
 
-### Output configuration
-
-output * bg /home/matti/Pictures/wallpaper.png fill
-output eDP-1 resolution 2880x1800@120.000Hz position 205 670
-
 ### Power
 
 exec swayidle -w \
