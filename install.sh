@@ -2,10 +2,19 @@
 
 dotfiles=$(pwd)
 
-echo "Setting nvim config"
-mkdir -p $HOME/.config/nvim
-cd $HOME/.config/nvim
+declare -A config_files=(
+  [nvim]="init.lua"
+  [sway]="config"
+)
 
-if [ ! -f init.lua ]; then
-  ln -s "${dotfiles}/config/nvim/init.lua"
-fi
+for config_name in "${!config_files[@]}"; do
+  files=${config_files[$config_name]}
+  echo "Setting ${config_name} config"
+  mkdir -p $HOME/.config/${config_name}
+  cd $HOME/.config/${config_name}
+  for file in ${files[@]}; do
+    if [ ! -f ${file} ]; then
+      ln -s "${dotfiles}/config/${config_name}/${file}"
+    fi
+  done
+done
