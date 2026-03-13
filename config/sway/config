@@ -145,7 +145,7 @@ bindsym $mod+space input type:keyboard xkb_switch_layout next
     bindsym $mod+a focus parent
     
     # Lock
-    bindsym $mod+delete exec /home/matti/.local/bin/screenoff
+    bindsym $mod+delete exec /home/matti/.local/bin/sway-screen-off
 
     # Suspend
     bindsym $mod+shift+delete exec systemctl suspend
@@ -223,7 +223,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while $HOME/dotfiles/bin/swaystatus; do sleep 1; done
+    status_command while $HOME/dotfiles/bin/sway-status; do sleep 1; done
 
     colors {
         statusline #ffffff
