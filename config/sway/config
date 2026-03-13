@@ -248,4 +248,5 @@ smart_gaps on
 # Font
 font pango:Inter Medium 10
 
+include $HOME/.config/sway/config.d/*
 include /etc/sway/config.d/*
