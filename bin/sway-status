@@ -37,13 +37,15 @@ VOLUME=$(amixer get Master | grep 'Right:' | awk '{print $5}' | sed 's/[^0-9]*//
 
 DATE=$(date +'%Y-%m-%d %H:%M:%S')
 
-BATTERY=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'percentage' | awk '{print $2}' | sed 's/%//g')
+BATTERY=$(cat /sys/class/power_supply/BAT0/capacity)
 BATTERY_ICON=$BATTERY_ICON_FULL
 if [ $BATTERY -lt 20 ]; then
     BATTERY_ICON=$BATTERY_ICON_EMPTY
 fi
 
-if [ $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'state' | awk '{print $2}') == "charging" ]; then
+BATTERY_STATUS=$(cat /sys/class/power_supply/BAT0/status)
+
+if [ $BATTERY_STATUS == "Charging" ]; then
     BATTERY_ICON=$CHARGING_ICON
 fi
 
