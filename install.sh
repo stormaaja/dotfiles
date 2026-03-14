@@ -5,6 +5,7 @@ dotfiles=$(pwd)
 declare -A config_files=(
   [nvim]="init.lua"
   [sway]="config"
+	[foot]="foot.ini"
 )
 
 for config_name in "${!config_files[@]}"; do
