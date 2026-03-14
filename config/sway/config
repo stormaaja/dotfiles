@@ -214,12 +214,15 @@ mode "resize" {
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
+
+exec_always sh -c "pkill sway-status; $HOME/dotfiles/bin/sway-status &"
+
 bar {
     position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while $HOME/dotfiles/bin/sway-status; do sleep 1; done
+    status_command while cat $HOME/.local/share/sway-status/last.dat; do sleep 1; done
 
     colors {
         statusline #ffffff
