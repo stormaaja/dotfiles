@@ -27,6 +27,10 @@ exec swayidle -w \
     resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -f -c 000000'
 
+bindsym $mod+ctrl+1 exec powerprofilesctl set power-saver
+bindsym $mod+ctrl+2 exec powerprofilesctl set balanced
+bindsym $mod+ctrl+3 exec powerprofilesctl set performance
+
 ### Input
 
 input type:touchpad {
@@ -145,7 +149,7 @@ bindsym $mod+space input type:keyboard xkb_switch_layout next
     bindsym $mod+a focus parent
     
     # Lock
-    bindsym $mod+delete exec /home/matti/.local/bin/sway-screen-off
+    bindsym $mod+delete exec $HOME/dotfiles/bin/sway-screen-off
 
     # Suspend
     bindsym $mod+shift+delete exec systemctl suspend
