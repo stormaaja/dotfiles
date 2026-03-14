@@ -14,6 +14,10 @@ set $term foot
 # Your preferred application launcher
 set $menu wmenu-run
 
+### Blue light filter
+
+exec_always pkill wlsunset && wlsunset -s 20:30 -S 5:30
+
 ### Power
 
 exec swayidle -w \
