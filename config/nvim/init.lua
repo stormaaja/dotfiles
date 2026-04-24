@@ -7,6 +7,9 @@ require "paq" {
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   "folke/tokyonight.nvim",
   "airblade/vim-gitgutter",
+  { "nvim-telescope/telescope.nvim", version = "*" },
+	"nvim-lua/plenary.nvim",
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 }
 
 vim.o.number = true
