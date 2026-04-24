@@ -6,6 +6,7 @@ require "paq" {
   { "lervag/vimtex", opt = true }, -- Use braces when passing options
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   "folke/tokyonight.nvim",
+  "airblade/vim-gitgutter",
 }
 
 vim.o.number = true
