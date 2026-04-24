@@ -24,3 +24,5 @@ vim.opt.softtabstop = 2
 -- Search
 vim.o.smartcase = true
 vim.o.ignorecase = true
+-- Copy to system clipboard
+vim.o.clipboard = "unnamedplus"
