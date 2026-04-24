@@ -10,6 +10,7 @@ require "paq" {
   { "nvim-telescope/telescope.nvim", version = "*" },
 	"nvim-lua/plenary.nvim",
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  "f-person/git-blame.nvim"
 }
 
 vim.o.number = true
