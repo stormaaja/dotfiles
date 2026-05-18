@@ -16,6 +16,8 @@ require "paq" {
 vim.o.number = true
 vim.o.hlsearch = false
 vim.o.signcolumn = 'yes'
+vim.o.wrap = true
+vim.o.linebreak = true
 vim.cmd.colorscheme('tokyonight')
 -- Tabs
 vim.opt.expandtab = true
